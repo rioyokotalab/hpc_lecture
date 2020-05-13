@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <vector>
+// #include <omp.h>
 
 template<class T>
 void merge(std::vector<T>& vec, int begin, int mid, int end) {
@@ -25,10 +26,12 @@ template<class T>
 void merge_sort(std::vector<T>& vec, int begin, int end) {
   if(begin < end) {
     int mid = (begin + end) / 2;
-    // #pragma omp task shared(vec)
-    merge_sort(vec, begin, mid);
-    merge_sort(vec, mid+1, end);
-    merge(vec, begin, mid, end);
+      #pragma omp task shared(vec) untied if(end-begin >= (1<<10))
+      merge_sort(vec, begin, mid);
+      #pragma omp task shared(vec) untied if(end-begin >= (1<<10))
+      merge_sort(vec, mid+1, end);
+      #pragma omp taskwait
+      merge(vec, begin, mid, end);
   }
 }
 
@@ -41,12 +44,25 @@ int main() {
   }
   printf("\n");
 
-  #pragma omp parallel
-  merge_sort(vec, 0, n-1);
 
+  // double time = omp_get_wtime();
+  #pragma omp parallel
+  {
+    #pragma omp single
+    merge_sort(vec, 0, n-1);
+  }
+  // printf("%f", omp_get_wtime() - time);
+
+  printf("\n");
   for (int i=0; i<n; i++) {
-    // #pragma omp single
     printf("%d ",vec[i]);
+  }
+
+  for (int i=0; i<n-1; i++) {
+    if (vec[i+1] < vec[i]) {
+      printf("Wrong!!!");
+      break;
+    }
   }
   printf("\n");
 }
