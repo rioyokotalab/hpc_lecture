@@ -1,6 +1,9 @@
 # Student ID
 19M30413
 
+# Name
+Steven Ge
+
 # hpc_lecture
 
 |          | Topic                                | Sample code               |
