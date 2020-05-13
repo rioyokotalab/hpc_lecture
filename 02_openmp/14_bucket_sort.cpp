@@ -28,7 +28,6 @@ int main() {
                   omp_unset_lock(&bucket_locks[key[i]])
           }
 
-          #pragma omp for
           for (int i=0; i<range; i++) {
                   int j = 0;
                   #pragma omp for reduction(+:j)
