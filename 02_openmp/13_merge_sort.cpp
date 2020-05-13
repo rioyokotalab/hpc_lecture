@@ -1,7 +1,6 @@
 #include <cstdio>
 #include <cstdlib>
 #include <vector>
-// #include <omp.h>
 
 template<class T>
 void merge(std::vector<T>& vec, int begin, int mid, int end) {
@@ -26,10 +25,15 @@ template<class T>
 void merge_sort(std::vector<T>& vec, int begin, int end) {
         if(begin < end) {
                 int mid = (begin + end) / 2;
+                // Create a task for each recursive call,
+                // that is, each recursive call is assigned to a thread.
+                // Do not tie a task to a thread, if there are many elements/tasks.
+                // Otherwise we may need to wait for unrelated tasks to finish.
       #pragma omp task shared(vec) untied if(end-begin >= (1<<10))
                 merge_sort(vec, begin, mid);
       #pragma omp task shared(vec) untied if(end-begin >= (1<<10))
                 merge_sort(vec, mid+1, end);
+                // When all previous tasks are finished, we can merge
       #pragma omp taskwait
                 merge(vec, begin, mid, end);
         }
@@ -45,24 +49,15 @@ int main() {
         printf("\n");
 
 
-        // double time = omp_get_wtime();
   #pragma omp parallel
         {
+                // Perform merge sort once
     #pragma omp single
                 merge_sort(vec, 0, n-1);
         }
-        // printf("%f", omp_get_wtime() - time);
 
         printf("\n");
         for (int i=0; i<n; i++) {
                 printf("%d ",vec[i]);
         }
-
-        for (int i=0; i<n-1; i++) {
-                if (vec[i+1] < vec[i]) {
-                        printf("Wrong!!!");
-                        break;
-                }
-        }
-        printf("\n");
 }

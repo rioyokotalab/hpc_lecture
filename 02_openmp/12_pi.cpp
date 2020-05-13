@@ -4,6 +4,7 @@ int main() {
         int n = 10;
         double dx = 1. / n;
         double pi = 0;
+        // Parallelization of an accumilation function
   #pragma omp parallel for reduction(+:pi)
         for (int i=0; i<n; i++) {
                 double x = (i + 0.5) * dx;
