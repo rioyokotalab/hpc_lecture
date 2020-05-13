@@ -1,3 +1,9 @@
+# This is Homework for HPC-LECTURE
+# Name:
+# Jingyu Quan
+# Student ID:
+# 20M31361
+
 # hpc_lecture
 
 |          | Topic                                | Sample code               |
