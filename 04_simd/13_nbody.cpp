@@ -39,7 +39,7 @@ int main() {
      __m256 rx2vec = _mm256_mul_ps(rxvec, rxvec);
      __m256 ry2vec = _mm256_mul_ps(ryvec, ryvec);
      __m256 rprevec = _mm256_add_ps(rx2vec, ry2vec);
-     __m256 rvec  = _mm256_rsqrt_ps(rprevec);
+     __m256 rvec  = _mm256_sqrt_ps(rprevec);
 
      __m256 r2vec = _mm256_mul_ps(rvec, rvec);
      __m256 r3vec = _mm256_mul_ps(rvec, r2vec);
@@ -47,8 +47,8 @@ int main() {
      __m256 mrxvec = _mm256_mul_ps(rxvec, jmvec);
      __m256 mryvec = _mm256_mul_ps(ryvec, jmvec);
 
-     __m256 ifxvec =- _mm256_mul_ps(mrxvec, r3vec);
-     __m256 ifyvec =- _mm256_mul_ps(mryvec, r3vec);
+     __m256 ifxvec =- _mm256_div_ps(mrxvec, r3vec);
+     __m256 ifyvec =- _mm256_div_ps(mryvec, r3vec);
 
      __m256 fxvec = _mm256_permute2f128_ps(ifxvec,ifxvec,1);
      fxvec = _mm256_add_ps(fxvec,ifxvec);
