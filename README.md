@@ -1,4 +1,7 @@
 # hpc_lecture
+19M18085 LIAN Tongda
+
+2020 May 14 Setting up git on ubuntu and test [commit] and [push] 
 
 |          | Topic                                | Sample code               |
 | -------- | ------------------------------------ | ------------------------- |
