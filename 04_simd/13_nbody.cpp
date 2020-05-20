@@ -1,10 +1,11 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cmath>
+#include <immintrin.h>
 
 int main() {
   const int N = 8;
-  double x[N], y[N], m[N], fx[N], fy[N];
+  float x[N], y[N], m[N], fx[N], fy[N];
   for(int i=0; i<N; i++) {
     x[i] = drand48();
     y[i] = drand48();
