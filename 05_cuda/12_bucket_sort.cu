@@ -19,6 +19,17 @@ __global__ void  bucketsort(int *bucket, int *key, int range){
   key[i]=j;
   k+=bucket[j];  
 }
+}
+__global__ void fillkey(int* key, int *bucket){
+   int i = threadIdx.x;
+   int j = bucket[i];
+   for (int k=1;k<8;k<<=1){
+       int n= __shfl_up_sync(0xffffffff, j, k);
+       if(i>=k) j+=n;
+}
+   j -= bucket[i];
+   for(;bucket[i];bucket[i]--)
+      key[j++]=i;
 } 
 
 
@@ -45,7 +56,8 @@ int main() {
     printf("%d ", bucket[i]);
   }
   printf("\n");
-  bucketsort<<<1,n>>>(bucket, key, range);
+//  bucketsort<<<1,n>>>(bucket, key, range);
+  fillkey<<<1,range>>>(key,bucket);
   cudaDeviceSynchronize();
 /*
   std::vector<int> bucket(range); 
@@ -61,6 +73,7 @@ int main() {
     }
   }
 */
+//get the offset of j
 
   for (int i=0; i<n; i++) {
     printf("%d ",key[i]);

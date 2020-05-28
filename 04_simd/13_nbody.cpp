@@ -40,7 +40,7 @@ int main() {
      __m256 rx2vec = _mm256_mul_ps(rxvec, rxvec);
      __m256 ry2vec = _mm256_mul_ps(ryvec, ryvec);
      __m256 rprevec = _mm256_add_ps(rx2vec, ry2vec);
-     __m256 rvec  = _mm256_sqrt_ps(rprevec);
+     __m256 rvec  = _mm256_sqrt_ps(rprevec);//slower than rsqrt 10 times
 
      __m256 r2vec = _mm256_mul_ps(rvec, rvec);
      __m256 r3vec = _mm256_mul_ps(rvec, r2vec);
