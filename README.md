@@ -11,7 +11,7 @@ Student ID 19M18197
 | Class 5  | GPU programming                      | 05_cuda,05_openacc        |
 | Class 6  | Parallel programing models           | 06_starpu                 |
 | Class 7  | Cache blocking                       | 07_cache_cpu,07_cache_gpu |
-| Class 8  | High Performance Python              | 08_cython                 |
+| Class 8  | High Performance Python              | 08_python                 |
 | Class 9  | I/O libraries                        | 09_io                     |
 | Class 10 | Parallel debugger                    | 10_debugger               |
 | Class 11 | Parallel profiler                    | 11_profiler               |

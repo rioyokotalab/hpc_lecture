@@ -6,7 +6,7 @@ __global__ void scan(int *a, int *b, int N) {
   for(int j=1; j<N; j<<=1) {
     b[i] = a[i];
     __syncthreads();
-    a[i] += b[i-j];
+    if(i>=j) a[i] += b[i-j];
     __syncthreads();
   }
 }

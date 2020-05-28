@@ -12,6 +12,7 @@ int main() {
   }
   printf("\n");
 
+<<<<<<< HEAD
   std::vector<int> bucket(range);
 #pragma omp parallel for
   for (int i=0; i<range; i++) {
@@ -28,6 +29,19 @@ offset[i]=offset[i-1]+bucket[i-1];
 #pragma omp parallel for
   for (int i=0; i<range; i++) {
     int j= offset[i];
+=======
+  std::vector<int> bucket(range,0); 
+#pragma omp parallel for
+  for (int i=0; i<n; i++)
+#pragma omp atomic update
+    bucket[key[i]]++;
+  std::vector<int> offset(range,0);
+  for (int i=1; i<range; i++) 
+    offset[i] = offset[i-1] + bucket[i-1];
+#pragma omp parallel for
+  for (int i=0; i<range; i++) {
+    int j = offset[i];
+>>>>>>> ebc183ec04fbd943b6eda12f4665b266c3a700da
     for (; bucket[i]>0; bucket[i]--) {
       key[j++] = i;
     }

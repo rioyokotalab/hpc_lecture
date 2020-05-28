@@ -1,3 +1,6 @@
+*.dat
+*.h5
 *.o
 *.out
 *.s
+.ipynb_checkpoints

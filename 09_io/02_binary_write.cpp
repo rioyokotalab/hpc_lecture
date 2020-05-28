@@ -5,12 +5,11 @@
 using namespace std;
 
 int main (int argc, char** argv) {
-  const int N = 1000000;
+  const int N = 100000000;
   vector<int> buffer(N,1);
-  ofstream file("data.dat");
+  ofstream file("data.dat", ios::binary);
   auto tic = chrono::steady_clock::now();
-  for(int i=0; i<N; i++)
-    file << buffer[i] << "\n";
+  file.write((char*)&buffer[0], N*sizeof(int));
   auto toc = chrono::steady_clock::now();
   file.close();
   double time = chrono::duration<double>(toc - tic).count();
