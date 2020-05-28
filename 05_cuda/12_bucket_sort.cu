@@ -48,6 +48,7 @@ int main() {
   reduction<<<1,n>>>(bucket, key);
   cudaDeviceSynchronize();
 <<<<<<< HEAD
+<<<<<<< HEAD
   for (int i=0; i<range; i++) {
     printf("%d ", bucket[i]);
   }
@@ -70,6 +71,10 @@ int main() {
   }
 */
 //get the offset of j
+=======
+  bucketsort<<<1,n>>>(bucket, key);
+  cudaDeviceSynchronize();
+>>>>>>> 2026757663db05c3bde302abdbd82ad559e7c0b7
 =======
   bucketsort<<<1,n>>>(bucket, key);
   cudaDeviceSynchronize();
