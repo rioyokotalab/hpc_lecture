@@ -1,5 +1,7 @@
 # hpc_lecture
 
+Student id: 20M38251
+
 |          | Topic                                | Sample code               |
 | -------- | ------------------------------------ | ------------------------- |
 | Class 1  | Introduction to parallel programming |                           |
