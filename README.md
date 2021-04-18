@@ -1,5 +1,7 @@
 # hpc_lecture
 
+### 20M31378   Xu Hongkun
+
 |          | Topic                                | Sample code               |
 | -------- | ------------------------------------ | ------------------------- |
 | Class 1  | Introduction to parallel programming |                           |
@@ -16,3 +18,4 @@
 | Class 12 | Containers                           |                           |
 | Class 13 | Scientific computing                 | 13_pde                    |
 | Class 14 | Deep Learning                        | 14_dl                     |
+
