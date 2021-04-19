@@ -1,6 +1,7 @@
 # hpc_lecture
 
 Student id: 20M38251
+Name: Zhang Sijie
 
 |          | Topic                                | Sample code               |
 | -------- | ------------------------------------ | ------------------------- |
