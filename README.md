@@ -1,3 +1,6 @@
+21M30880
+JU GUIYUAN
+
 # hpc_lecture
 
 |          | Topic                                | Sample code               |
