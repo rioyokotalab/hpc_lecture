@@ -1,4 +1,4 @@
-#20M38162 Han Qiuhan
+20M38162 Han Qiuhan
 # hpc_lecture
 
 |          | Topic                                | Sample code               |
