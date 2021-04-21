@@ -1,5 +1,5 @@
 # hpc_lecture
-Name: JIANG JIWEI
+Name: JIANG JIWEI;
 Student Id Number: 21M30519
 
 |          | Topic                                | Sample code               |
